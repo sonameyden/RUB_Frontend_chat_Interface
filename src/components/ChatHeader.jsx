@@ -1,5 +1,5 @@
 /**
- * ChatHeader.jsx — Chat window header bar
+ * ChatHeader.jsx — Chat window header bar (mobile-responsive)
  */
 
 import { Minus, Maximize2, Minimize2, Trash2, X } from 'lucide-react';
@@ -14,7 +14,7 @@ export default function ChatHeader({
 }) {
   return (
     <div
-      className="relative flex items-center px-4 py-3 flex-shrink-0 select-none overflow-hidden"
+      className="relative flex items-center px-3 sm:px-4 py-3 flex-shrink-0 select-none overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #2d5a8e 0%, #3A6EA5 45%, #6FA3D2 100%)',
       }}
@@ -24,15 +24,15 @@ export default function ChatHeader({
            style={{ background: 'linear-gradient(90deg, transparent, #C9A34E 30%, #e8c96a 50%, #C9A34E 70%, transparent)' }} />
 
       {/* Left: logo + title */}
-      <div className="flex items-center gap-3 flex-1 min-w-0">
+      <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
         {logoSrc ? (
           <img
             src={logoSrc}
             alt="RUB Logo"
-            className="w-8 h-8 rounded-full object-contain bg-white p-0.5 shadow-md flex-shrink-0"
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-contain bg-white p-0.5 shadow-md flex-shrink-0"
           />
         ) : (
-          <div className="w-8 h-8 rounded-full bg-white/20 border border-white/30
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 border border-white/30
                           flex items-center justify-center flex-shrink-0 shadow-md">
             <span className="text-white font-display font-bold text-xs">R</span>
           </div>
@@ -50,7 +50,7 @@ export default function ChatHeader({
       </div>
 
       {/* Right: action buttons */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
         {/* Clear chat */}
         <button
           onClick={onClear}
@@ -76,11 +76,11 @@ export default function ChatHeader({
           </button>
         )}
 
-        {/* Expand / Shrink */}
+        {/* Expand / Shrink — hidden on mobile to save space (fullscreen is better) */}
         <button
           onClick={onToggleFullscreen}
           aria-label={isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}
-          className="w-7 h-7 rounded-lg flex items-center justify-center
+          className="hidden sm:flex w-7 h-7 rounded-lg items-center justify-center
                      text-white/70 hover:text-white hover:bg-white/15
                      transition-all duration-150"
         >

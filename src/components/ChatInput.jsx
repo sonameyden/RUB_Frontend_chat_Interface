@@ -1,5 +1,5 @@
 /**
- * ChatInput.jsx — Message input bar
+ * ChatInput.jsx — Message input bar (mobile-responsive)
  */
 
 import { useRef, useEffect } from 'react';
@@ -34,8 +34,12 @@ export default function ChatInput({ value, onChange, onSubmit, disabled, autoFoc
         onChange={e => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={disabled}
-        placeholder="Ask about programs, admissions, or campus info…"
-        className="flex-1 px-3.5 py-2.5 text-sm rounded-xl
+        /*
+         * Two placeholder strings via CSS (sm: breakpoint handled via shorter text).
+         * We simply use a shorter one that fits all screens.
+         */
+        placeholder="Ask about programs, admissions…"
+        className="flex-1 min-w-0 px-3 py-2.5 text-sm rounded-xl
                    bg-rub-lightGray border border-transparent
                    text-rub-darkText placeholder-gray-400
                    focus:outline-none focus:border-rub-royalBlue focus:bg-white

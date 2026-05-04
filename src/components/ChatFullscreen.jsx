@@ -1,5 +1,5 @@
 /**
- * ChatFullscreen.jsx — Full-viewport chat experience
+ * ChatFullscreen.jsx — Full-viewport chat experience (mobile-responsive)
  */
 
 import ChatHeader       from './ChatHeader';
@@ -33,8 +33,8 @@ export default function ChatFullscreen({
         isFullscreen={true}
       />
 
-      {/* Decorative university band */}
-      <div className="flex items-center justify-center py-3 px-4
+      {/* Decorative university band — hidden on very small screens */}
+      <div className="hidden sm:flex items-center justify-center py-3 px-4
                       border-b border-rub-borderLight bg-white/60 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <img src={rubLogo} alt="RUB" className="w-6 h-6 rounded-full object-contain" />
@@ -51,8 +51,8 @@ export default function ChatFullscreen({
       </div>
 
       {/* Messages area */}
-      <div className="flex-1 overflow-y-auto chat-scroll py-6 px-4">
-        <div className="max-w-2xl mx-auto space-y-4">
+      <div className="flex-1 overflow-y-auto chat-scroll py-4 sm:py-6 px-3 sm:px-4">
+        <div className="max-w-2xl mx-auto space-y-3 sm:space-y-4">
           {messages.map(msg => (
             <MessageBubble key={msg.id} message={msg} />
           ))}
@@ -62,7 +62,7 @@ export default function ChatFullscreen({
       </div>
 
       {/* Quick suggestions */}
-      <div className="max-w-2xl mx-auto w-full">
+      <div className="max-w-2xl mx-auto w-full px-1">
         <QuickSuggestions onSelect={onSuggestion} visible={showSuggestions} />
       </div>
 
@@ -77,8 +77,8 @@ export default function ChatFullscreen({
             autoFocus
           />
         </div>
-        <p className="text-center text-[10px] text-gray-400 pb-2 font-body">
-          RUB Assistant can make mistakes. Verify important information with the university.
+        <p className="text-center text-[10px] text-gray-400 pb-2 font-body px-4">
+          RUB Assistant can make mistakes. Verify important information.
         </p>
       </div>
     </div>

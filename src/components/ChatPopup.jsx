@@ -1,8 +1,7 @@
 /**
- * ChatPopup.jsx — Compact floating chat window
+ * ChatPopup.jsx — Compact floating chat window (mobile-responsive)
  */
 
-import { useRef, useEffect } from 'react';
 import ChatHeader       from './ChatHeader';
 import MessageBubble    from './MessageBubble';
 import TypingIndicator  from './TypingIndicator';
@@ -23,15 +22,21 @@ export default function ChatPopup({
   onClear,
   bottomRef,
 }) {
-  const showSuggestions = messages.length <= 1; // Show after welcome only
+  const showSuggestions = messages.length <= 1;
 
   return (
     <div
       className="popup-enter flex flex-col rounded-[20px] overflow-hidden
                  border border-rub-borderLight"
       style={{
-        width:     '360px',
-        height:    '520px',
+        /*
+         * Fluid sizing:
+         *  - Width:  min(360px, 100vw - 1.5rem)  → fits any phone ≥ 280px
+         *  - Height: min(520px, 100vh - 5.5rem)  → never taller than viewport
+         *    (5.5rem accounts for the FAB + gap below the popup)
+         */
+        width:     'min(360px, calc(100vw - 1.5rem))',
+        height:    'min(520px, calc(100svh - 5.5rem))',
         boxShadow: '0 12px 48px rgba(58,110,165,0.22), 0 2px 16px rgba(0,0,0,0.10)',
         background: '#ffffff',
       }}
@@ -48,7 +53,7 @@ export default function ChatPopup({
 
       {/* Messages */}
       <div
-        className="flex-1 overflow-y-auto chat-scroll px-4 py-4 space-y-3"
+        className="flex-1 overflow-y-auto chat-scroll px-3 py-3 space-y-3"
         style={{ background: 'linear-gradient(180deg, #f7f9fd 0%, #ffffff 100%)' }}
       >
         {messages.map(msg => (
